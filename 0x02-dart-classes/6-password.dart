@@ -13,6 +13,8 @@ class Password {
           _password.contains(RegExp(r'[0-9]'))) {
         return true;
       }
+      else
+      return false;
     }
     return false;
   }
