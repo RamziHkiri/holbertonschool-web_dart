@@ -3,7 +3,7 @@ import 'dart:convert';
 
 calculateTotal() async {
   try {
-    double total = 0;
+    double total = 0.0;
     var str = await fetchUserData();
     var user = json.decode(str);
     var ord = await fetchUserOrders(user['id']);
@@ -15,6 +15,6 @@ calculateTotal() async {
     return total;
   } catch (e) {
     print('error caught: $e');
-    return -1;
+    return -1.0;
   }
 }
