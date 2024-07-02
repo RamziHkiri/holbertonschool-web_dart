@@ -8,8 +8,6 @@ Future<String> greetUser() async {
     var user = json.decode(str);
     return'Hello ${user["username"]}' ;
   } catch (e) {
-    print('error caught: $e');
-
     return 'error caught: $e';
   }
 }
