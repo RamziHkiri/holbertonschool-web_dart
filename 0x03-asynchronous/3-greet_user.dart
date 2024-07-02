@@ -14,7 +14,7 @@ Future<String> greetUser() async {
   }
 }
 
-loginUser() async {
+Future<String> loginUser() async {
  try {
   if (await checkCredentials()) {
     print('There is a user: true');
@@ -24,6 +24,6 @@ loginUser() async {
     return 'Wrong credentials';
   }
 } catch (e) {
-    print('error caught: $e');
+    return('error caught: $e');
   }
 }
