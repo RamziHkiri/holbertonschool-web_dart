@@ -6,7 +6,9 @@ Future<String> greetUser() async {
  try {
     var str = await fetchUserData();
     var user = json.decode(str);
-    return'Hello ${user["username"]}' ;
+    return Future.delayed(
+        const Duration(seconds: 2), () => 
+    'Hello ${user["username"]}' );
   } catch (e) {
     return 'error caught: $e';
   }
