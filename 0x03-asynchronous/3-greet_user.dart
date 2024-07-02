@@ -1,29 +1,26 @@
 import '3-util.dart';
 import 'dart:convert';
 
-
 Future<String> greetUser() async {
- try {
-    var str = await fetchUserData();
-    var user = json.decode(str);
-    return Future.delayed(
-        const Duration(seconds: 2), () => 
-    'Hello ${user["username"]}' );
-  } catch (e) {
-    return 'error caught: $e';
+  try {
+    String user = await fetchUserData();
+    Map<String, dynamic> userData = jsonDecode(user);
+    return 'Hello ${userData['username']}';
+  } catch (err) {
+    return 'error caught: $err';
   }
 }
 
 Future<String> loginUser() async {
- try {
-  if (await checkCredentials()) {
-    print('There is a user: true');
-    return await greetUser();
-  } else {
-    print('There is a user: fasle');
-    return 'Wrong credentials';
-  }
-} catch (e) {
-    return('error caught: $e');
+  try {
+    bool stateUser = await checkCredentials();
+    print('There is a user: $stateUser');
+    if (stateUser) {
+      return await greetUser();
+    } else {
+      return 'Wrong credentials';
+    }
+  } catch (error) {
+    return 'error caught: $error';
   }
 }
